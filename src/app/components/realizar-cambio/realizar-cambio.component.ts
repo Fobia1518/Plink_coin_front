@@ -10,9 +10,9 @@ import { async } from 'q';
 })
 export class RealizarCambioComponent implements OnInit {
 
-  public items: object = {};
-  public itemsDigital: object = {};
-  public fiat_currencies_: object = [];
+  public items: object = [];
+  public itemsDigital: object = [];
+  public itemsConvert: object = [];
   from_quantity_input: number;
   to_quantity_input: number;
   opSelectedCrypto: string = "BTC";
@@ -23,7 +23,6 @@ export class RealizarCambioComponent implements OnInit {
   ngOnInit() {
     this.Fiat_currency_symbols();
     this.Digital_currency_symbols();
-
   }
 
   getCoins(items: any): object {
@@ -38,6 +37,11 @@ export class RealizarCambioComponent implements OnInit {
     return result;
   }
 
+  ConvertItems(items: any): number {
+    let result = items["to_quantity"]
+    return result;
+  }
+
   Fiat_currency_symbols(){
     this.dataService.getFiat_currency_symbols()
       .subscribe(
@@ -48,7 +52,7 @@ export class RealizarCambioComponent implements OnInit {
   }
 
   Digital_currency_symbols(){
-    this.dataService.geDigital_currency_symbols()
+    this.dataService.getDigital_currency_symbols()
       .subscribe(
         data => this.itemsDigital = this.getCrypto(data),
         error => console.error('Error:' + error),
@@ -56,4 +60,16 @@ export class RealizarCambioComponent implements OnInit {
       );
   }
 
+  Convert(){
+    let cant, cryp, coin;
+    cant = this.from_quantity_input;
+    cryp = this.opSelectedCrypto;
+    coin = this.opSelectedCoin;
+    this.dataService.getConvert(cant, cryp, coin)
+      .subscribe(
+        data => this.to_quantity_input = this.ConvertItems(data),
+        error => console.error('Error:' + error),
+        () => console.log(this.to_quantity_input)
+      );
+  }
 }

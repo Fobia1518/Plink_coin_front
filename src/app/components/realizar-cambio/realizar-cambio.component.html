@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <input 
                             type="number" 
-                            name="from_quantity" 
+                            name="from_quantity_input" 
                             placeholder="$ 0,00" 
                             class="form-control"
                             min = 0
@@ -41,12 +41,11 @@
                         name="to_quantity" 
                         placeholder="$ 0,00" 
                         class="form-control" 
-                        #to_quantity="ngModel"
-                        [(ngModel)]="to_quantity_input" 
-                        [ngClass]="{'is-invalid': to_quantity.errors && to_quantity.touched}" disabled>
+                        [(ngModel)]="to_quantity_input" disabled
+                        >
                 </div>
                 <div class="form-group">
-                    <button id="exchange">
+                    <button id="exchange" type="submit" (click)="Convert()">
                         <img src="../../../assets/exchange.png" alt="Change" width="35px">
                     </button>
                 </div>

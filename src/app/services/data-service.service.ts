@@ -35,9 +35,19 @@ export class DataService {
   /**
    * digital-currency-symbols
    */
-  geDigital_currency_symbols(): Observable<object>{
+  getDigital_currency_symbols(): Observable<object>{
     return this.httpClient.get(
       `${this.url}/digital-currency-symbols`,
+      {headers: this.httpOptions}
+    );
+  }
+
+  /**
+   * Convert
+   */
+  getConvert(cant:number, cryp: string, coin: string): Observable<object>{
+    return this.httpClient.get(
+      `${this.url}/convert?qty=${cant}&from=${cryp}&to=${coin}`,
       {headers: this.httpOptions}
     );
   }
