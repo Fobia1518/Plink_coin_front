@@ -14,7 +14,7 @@ export class RealizarCambioComponent implements OnInit {
   public itemsDigital: object = [];
   public itemsConvert: object = [];
   from_quantity_input: number;
-  to_quantity_input: number;
+  to_quantity_input: string;
   opSelectedCrypto: string = "BTC";
   opSelectedCoin: string = "USD";
 
@@ -65,9 +65,14 @@ export class RealizarCambioComponent implements OnInit {
     cant = this.from_quantity_input;
     cryp = this.opSelectedCrypto;
     coin = this.opSelectedCoin;
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: coin,
+      minimumFractionDigits: 2
+    })
     this.dataService.getConvert(cant, cryp, coin)
       .subscribe(
-        data => this.to_quantity_input = this.ConvertItems(data),
+        data => this.to_quantity_input = formatter.format(this.ConvertItems(data)),
         error => console.error('Error:' + error),
         () => console.log(this.to_quantity_input)
       );
