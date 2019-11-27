@@ -1,0 +1,16 @@
+#crypto, #country, input.form-control{
+    border: 1px solid;
+    border-radius: 20px;
+}
+
+.card-body{
+    padding-right: 70px;
+}
+
+#exchange{
+    position: absolute;
+    background: transparent;
+    border: 0px;
+    margin-left: 465px;
+    margin-top: -132px;
+}

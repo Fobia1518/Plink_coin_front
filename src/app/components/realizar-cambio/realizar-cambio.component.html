@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="card col-md-6 offset-md-3">
+            <div class="card-header">
+                <h3>
+                    Realizar Cambios
+                </h3>
+                <h5>
+                    <font color="grey">Seleccione las monedas</font>
+                </h5>
+            </div>
+            <div class="card-body">
+                    <div class="form-group">
+                        <input 
+                            type="number" 
+                            name="from_quantity" 
+                            placeholder="$ 0,00" 
+                            class="form-control"
+                            min = 0
+                            #from_quantity="ngModel"
+                            [(ngModel)]="from_quantity_input" 
+                            [ngClass]="{'is-invalid': from_quantity.errors && from_quantity.touched}" required
+                        >
+                        <div [hidden]="!from_quantity.errors?.required" class="invalid-feedback">
+                            * Campo requerido
+                        </div>
+                    </div>
+                <div class="form-group">
+                        <select id="crypto" [(ngModel)]='opSelectedCrypto' class="custom-select">
+                            <option *ngFor="let item of itemsDigital" value={{item.id}}>{{item.id}}</option>
+                        </select>
+                    </div>
+                <div class="form-group">
+                    <select id="country" class="custom-select" [(ngModel)]='opSelectedCoin' >
+                        <option *ngFor="let item of items" value={{item.id}}>{{item.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                        <input 
+                        type="number" 
+                        name="to_quantity" 
+                        placeholder="$ 0,00" 
+                        class="form-control" 
+                        #to_quantity="ngModel"
+                        [(ngModel)]="to_quantity_input" 
+                        [ngClass]="{'is-invalid': to_quantity.errors && to_quantity.touched}" disabled>
+                </div>
+                <div class="form-group">
+                    <button id="exchange">
+                        <img src="../../../assets/exchange.png" alt="Change" width="35px">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

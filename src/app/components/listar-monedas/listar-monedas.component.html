@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <table align="center" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Criptomoneda</th>
+                    <th scope="col">Convertir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let item of monedas.prices">
+                    <td class="font">{{item.name}}</td>
+                    <td>
+                        <font color="blue">{{item.price | currency:'USD':true}}</font>
+                    </td>
+                    <td>
+                        <div *ngIf="item.crypto==1; else elseBlock">
+                            <font color="green">SI</font>
+                        </div>
+                        <ng-template #elseBlock >
+                            <font color="red">NO</font></ng-template>
+                    </td>
+                    <td>
+                        <a routerLink='/'>
+                            <img src="../../../assets/shuffle.png" alt="Convertir" width="35px">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
