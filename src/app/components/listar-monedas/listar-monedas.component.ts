@@ -17,10 +17,14 @@ export class ListarMonedasComponent implements OnInit {
   ngOnInit() {
     this.dataService.getPrices()
       .subscribe(
-        data => this.monedas = data,
+        data => this.monedas = this.getPrices(data),
         error => console.error('Error:' + error),
         () => console.log(this.monedas)
       );
   }
 
+  getPrices(items: any): object {
+    let arr = items["prices"];
+    return arr;
+  }
 }

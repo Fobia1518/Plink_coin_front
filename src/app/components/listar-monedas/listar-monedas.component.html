@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor = "let item of monedas.prices">
+                <tr *ngFor = "let item of monedas">
                     <td class="font">{{item.name}}</td>
                     <td>
                         <font color="blue">{{item.price | currency:'USD':true}}</font>

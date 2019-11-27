@@ -13,7 +13,8 @@ export class RealizarCambioComponent implements OnInit {
   public items: object = {};
   public itemsDigital: object = {};
   public fiat_currencies_: object = [];
-  from_quantity: number;
+  from_quantity_input: number;
+  to_quantity_input: number;
   opSelectedCrypto: string = "BTC";
   opSelectedCoin: string = "USD";
 
